@@ -1,0 +1,38 @@
+:root {
+	--background: #F9F5F6;
+	--background-dark: #F8E8EE;
+	
+	--color: #FDCEDF;
+	--color-dark: #F2BED1;
+
+	--text: #2B2A2B;
+
+	--font: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+}
+
+body {
+	background-color: var(--background);
+	color: var(--text);
+	font-family: var(--font);
+	margin: 2em;
+}
+
+h1, h3 {
+	margin: 0;
+	text-shadow: 2px 2px var(--color-dark);
+}
+
+.visits {
+	font-size: 0.4em;
+	text-shadow: 1px 1px var(--color-dark);
+	margin-left: 1em;
+}
+
+ul {
+	margin: 0;
+}
+
+li * {
+	display: inline-block;
+	margin: 0.2em;
+}
