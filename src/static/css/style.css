@@ -36,3 +36,11 @@ li * {
 	display: inline-block;
 	margin: 0.2em;
 }
+
+.badges {
+	margin-top: 0.2em;
+}
+
+.badges a {
+	margin: 0.1em;
+}
