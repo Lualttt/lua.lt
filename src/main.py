@@ -36,6 +36,10 @@ def index():
 
   return render_template("index.pug", visits=VISITS)
 
+@app.route("/gallery")
+def gallery():
+  return render_template("gallery.pug")
+
 atexit.register(save_visits)
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 :root {
 	--background: #F9F5F6;
 	--background-dark: #F8E8EE;
-	
+
 	--color: #FDCEDF;
 	--color-dark: #F2BED1;
 
@@ -44,3 +44,23 @@ li * {
 .badges a {
 	margin: 0.1em;
 }
+
+.gallery-item {
+  display: grid;
+  grid-template-columns: 50% 1fr;
+  grid-template-rows: 1em 1fr;
+  grid-column-gap: 0.5em;
+  grid-row-gap: 0.5em;
+  margin-bottom: 1em;
+}
+.gallery-item img { grid-area: 1 / 1 / 3 / 2; width: 100%; }
+.gallery-item b { grid-area: 1 / 2 / 2 / 3; }
+.gallery-item p { grid-area: 2 / 2 / 3 / 3; margin: 0; }
+
+.gallery-item:nth-child(even) {
+	grid-template-columns: 1fr 50%;
+  grid-template-rows: 1em 1fr;
+}
+.gallery-item:nth-child(even) img { grid-area: 1 / 2 / 3 / 3; width: 100%; }
+.gallery-item:nth-child(even) b { grid-area: 1 / 1 / 2 / 2; }
+.gallery-item:nth-child(even) p { grid-area: 2 / 1 / 3 / 2; margin: 0; }
