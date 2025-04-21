@@ -7,7 +7,7 @@ app.jinja_env.add_extension("pypugjs.ext.jinja.PyPugJSExtension")
 VISITS = "something went wrong please contact me"
 try:
   with open("visits.txt", "r") as file:
-    VISITS = int(file.read())
+    VISITS = int(file.read().rstrip())
 except (ValueError, FileNotFoundError) as error:
   print("Whoopsie!!", error)
   with open("error.txt", "a+") as file:
