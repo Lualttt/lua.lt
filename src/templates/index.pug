@@ -22,32 +22,24 @@ html
 		<meta property="twitter:description" content="a place for all my random stuff :))">
 		<meta property="twitter:url" content="https://lua.lt">
 	body
-		h1 Welcome to lua.lt
-			span(class="visits") page visits: #{visits}
-		h3 Links
+		div(class="title")
+		div
+			div(class="visits")
+			{% for number in visits|string %}
+			div(class="number number-{{number}}")
+			{% endfor %}
+		div(class="header-links")
 		ul
 			li
-				a(href="https://lua.lt") lua.lt
-				p 🞂 landing page
-		h3 Contact
+				a(class="link link-lua-lt" href="https://lua.lt")
+		div(class="header-contact")
 		ul
 			li
-				p lualt@lua.lt 🞂 xmpp
+				a(class="link link-xmpp" href="xmpp:lualt@lua.lt")
+				div(class="text text-xmpp")
 			li
-				p @lualt 🞂 discord account
+				a(class="link link-email" href="mailto:mail@lua.lt")
+				div(class="text text-email")
 			li
-				a(href="mailto:email@lua.lt") email@lua.lt
-				p 🞂 email
-
-		h3 Web Badges (88x31 & 80x15)
-			div(class="badges")
-				a(href="https://lua.lt")
-					img(src="/static/images/badge.png" alt="lua.lt")
-				a(href="https://cosmetica.cc")
-					img(src="/static/images/cosmetica-badge.png" alt="cosmetica.cc")
-
-			div(class="badges")
-				a(href="https://lua.lt")
-					img(src="/static/images/badge-small.png" alt="lua.lt")
-				a(href="https://cosmetica.cc")
-					img(src="/static/images/cosmetica-badge-small.png" alt="cosmetica.cc")
+				a(class="link link-discord" href="https://discord.gg/AT5aztECSd")
+				div(class="text text-discord")
