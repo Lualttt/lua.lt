@@ -36,6 +36,11 @@ def index():
 
   return render_template("index.pug", visits=VISITS)
 
+@app.route("/visits")
+def visits():
+    global VISITS
+    return str(VISITS)
+
 atexit.register(save_visits)
 
 if __name__ == "__main__":
