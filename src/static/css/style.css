@@ -115,6 +115,12 @@ li::before {
 	width: calc(var(--unit) * 3);
 }
 
+.link-live-lua-lt {
+	background: no-repeat url("/static/images/link-live-lua-lt.png");
+	height: calc(var(--unit) * 1);
+	width: calc(var(--unit) * 5.5);
+}
+
 .link-xmpp {
 	background: no-repeat url("/static/images/link-xmpp.png");
 	height: calc(var(--unit) * 1);
