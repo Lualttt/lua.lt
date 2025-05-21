@@ -4,6 +4,7 @@ html
 		title lua.lt
 
 		link(href="static/css/style.css" rel="stylesheet")
+		link(href="static/css/drawing.css" rel="stylesheet")
 		link(href="static/images/favicon.png" rel="icon")
 
 		link(href="https://indieauth.com/auth" rel="authorization_endpoint")
@@ -47,3 +48,14 @@ html
 			li
 				a(class="link link-discord" href="https://discord.gg/AT5aztECSd")
 				div(class="text text-discord")
+		div(class="drawing")
+			div(class="drawing-buttons")
+				button(id="color-black")
+				button(id="color-red")
+				button(id="color-white")
+				button(id="send") Send
+			div(class="drawing-canvases")
+				canvas(id="canvas-black" width="264" height="176")
+				canvas(id="canvas-red" width="264" height="176")
+
+		script(src="/static/javascript/drawing.js")
