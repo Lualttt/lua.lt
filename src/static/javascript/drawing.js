@@ -11,13 +11,41 @@ const red_button = document.getElementById("color-red");
 const white_button = document.getElementById("color-white");
 const send_button = document.getElementById("send");
 
+let canvas_rect = canvas_red.getBoundingClientRect();
+const canvas_scale_x = canvas_red.width / canvas_rect.width;
+const canvas_scale_y = canvas_red.height / canvas_rect.height;
+
 let coordinates = { x: 0, y: 0 };
+let touches = [];
 let is_painting = false;
 let color = "black";
 
-document.addEventListener("mousedown", startDrawing);
-document.addEventListener("mouseup", stopDrawing);
-document.addEventListener("mousemove", draw);
+document.addEventListener("mousedown", (event) => {
+	is_painting = true;
+	setPosition(event);
+});
+document.addEventListener("mouseup", () => {
+	is_painting = false;
+});
+document.addEventListener("mousemove", drawCursor);
+
+document.addEventListener("touchstart", (event) => {
+	event.preventDefault();
+	is_painting = true;
+	setTouches(event.touches);
+});
+document.addEventListener("touchend", (event) => {
+	event.preventDefault();
+	is_painting = false;
+});
+document.addEventListener(
+	"touchmove",
+	(event) => {
+		event.preventDefault();
+		drawTouches(event);
+	},
+	false,
+);
 
 black_button.addEventListener("click", () => {
 	color = "black";
@@ -36,32 +64,52 @@ white_button.addEventListener("click", () => {
 });
 send_button.addEventListener("click", sendImage);
 
+black_button.addEventListener("touchend", () => {
+	color = "black";
+	ctx_black.globalCompositeOperation = "source-over";
+	ctx_red.globalCompositeOperation = "destination-out";
+});
+red_button.addEventListener("touchend", () => {
+	color = "red";
+	ctx_black.globalCompositeOperation = "destination-out";
+	ctx_red.globalCompositeOperation = "source-over";
+});
+white_button.addEventListener("touchend", () => {
+	color = "white";
+	ctx_black.globalCompositeOperation = "destination-out";
+	ctx_red.globalCompositeOperation = "destination-out";
+});
+send_button.addEventListener("touchend", sendImage);
+
 ctx_black.fillStyle = "white";
 ctx_black.rect(0, 0, 264, 176);
 ctx_black.fill();
 
 function setPosition(event) {
-	let rect = canvas_red.getBoundingClientRect();
-	let scaleX = canvas_red.width / rect.width;
-	let scaleY = canvas_red.height / rect.height;
+	canvas_rect = canvas_red.getBoundingClientRect();
 
-	let x = (event.clientX - rect.left) * scaleX;
-	let y = (event.clientY - rect.top) * scaleY;
+	let x = (event.clientX - canvas_rect.left) * canvas_scale_x;
+	let y = (event.clientY - canvas_rect.top) * canvas_scale_y;
 
 	coordinates.x = x;
 	coordinates.y = y;
 }
 
-function startDrawing(event) {
-	is_painting = true;
-	setPosition(event);
+function setTouches(event_touches) {
+	canvas_rect = canvas_red.getBoundingClientRect();
+	touches = [];
+
+	for (let i = 0; i < event_touches.length; i++) {
+		let touch = event_touches[i];
+
+		let x = (touch.clientX - canvas_rect.left) * canvas_scale_x;
+		let y = (touch.clientY - canvas_rect.top) * canvas_scale_y;
+
+		touches.push({ x: x, y: y });
+	}
 }
 
-function stopDrawing() {
-	is_painting = false;
-}
-
-function draw(event) {
+function drawCursor(event) {
 	if (!is_painting) return;
 
 	ctx_black.beginPath();
@@ -83,6 +131,33 @@ function draw(event) {
 
 	ctx_red.lineTo(coordinates.x, coordinates.y);
 	ctx_red.stroke();
+}
+
+function drawTouches(event) {
+	if (!is_painting) return;
+
+	let old_touches = touches;
+	setTouches(event.touches);
+
+	for (let i = 0; i < old_touches.length; i++) {
+		ctx_black.beginPath();
+		ctx_black.lineWidth = 5;
+		ctx_black.lineCap = "round";
+		ctx_black.strokeStyle = "#000000";
+		ctx_black.moveTo(old_touches[i].x, old_touches[i].y);
+
+		ctx_red.beginPath();
+		ctx_red.lineWidth = 5;
+		ctx_red.lineCap = "round";
+		ctx_red.strokeStyle = "#ff0000";
+		ctx_red.moveTo(old_touches[i].x, old_touches[i].y);
+
+		ctx_black.lineTo(touches[i].x, touches[i].y);
+		ctx_black.stroke();
+
+		ctx_red.lineTo(touches[i].x, touches[i].y);
+		ctx_red.stroke();
+	}
 }
 
 function sendImage() {
