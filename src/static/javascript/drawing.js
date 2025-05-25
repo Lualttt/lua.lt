@@ -10,6 +10,7 @@ const black_button = document.getElementById("color-black");
 const red_button = document.getElementById("color-red");
 const white_button = document.getElementById("color-white");
 const send_button = document.getElementById("send");
+const faq_button = document.getElementById("faq");
 
 let canvas_rect = canvas_red.getBoundingClientRect();
 const canvas_scale_x = canvas_red.width / canvas_rect.width;
@@ -63,6 +64,11 @@ white_button.addEventListener("click", () => {
 	ctx_red.globalCompositeOperation = "destination-out";
 });
 send_button.addEventListener("click", sendImage);
+faq_button.addEventListener("click", () => {
+	alert(
+		"1. Can you add more colors?\nNo the screen itself only supports black red and white so adding more colors is not possible.\n2. What does this do?\nThis drawing canvas allows you to send an image to an e-ink display in my room thats always on.\n3. How long will my image be visible?\nIt will show for a minute then it waits for a new one to come in to replace it.",
+	);
+});
 
 black_button.addEventListener("touchend", () => {
 	color = "black";
