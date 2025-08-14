@@ -169,3 +169,23 @@ li::before {
 		background-position: 0px -60px;
 	}
 }
+
+.bunny {
+	float: right;
+
+	padding: 1em;
+}
+
+.bunny-image {
+	height: 104px;
+	width: 131px;
+
+	display: block;
+
+	background: no-repeat url("/static/images/bnuuy-1.png");
+	border: none;
+}
+
+.bunny-image:hover {
+	background: no-repeat url("/static/images/bnuuy-2.png");
+}
