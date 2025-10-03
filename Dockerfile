@@ -8,6 +8,11 @@ RUN CGO_ENABLED=0 go build -o /go/bin/app
 
 FROM gcr.io/distroless/static-debian12
 
-COPY --from=build /go/bin/app .
+WORKDIR /app
 
-CMD ["/app"]
+COPY --from=build /go/bin/app .
+COPY web web
+
+EXPOSE 8080
+
+ENTRYPOINT ["./app"]

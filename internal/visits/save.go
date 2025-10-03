@@ -51,8 +51,10 @@ func SaveVisits(amount int) {
 func LoadVisits() int {
 	data, err := os.ReadFile("visits.json")
 	if err != nil {
-		slog.Error("error loading visits", "error", err)
-		data = []byte("{\"visits\": 0}")
+		slog.Warn("error loading visits", "error", err)
+		slog.Info("generating visits.json")
+		SaveVisits(0)
+		return 0
 	}
 
 	visits := visitsFile{}
