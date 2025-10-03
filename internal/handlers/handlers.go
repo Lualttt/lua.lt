@@ -15,7 +15,7 @@ type PageVariables struct {
 	Visits int
 }
 
-func (pageVariables PageVariables) ViewsAsArray() []string {
+func (pageVariables PageVariables) VisitsAsArray() []string {
 	var text string = strconv.Itoa(pageVariables.Visits)
 	characters := make([]string, utf8.RuneCountInString(text))
 

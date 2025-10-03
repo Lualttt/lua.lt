@@ -1,2 +1,89 @@
-<h1>Welcome!!!</h1>
-<p>Views: {{range $digit := .ViewsAsArray}}<span>{{$digit}}</span>{{end}}</p>
+<!doctype html>
+<html>
+	<head>
+		<title>lua.lt</title>
+
+		<link href="static/css/style.css" rel="stylesheet" />
+		<link href="static/css/drawing.css" rel="stylesheet" />
+		<link href="static/images/favicon.png" rel="icon" />
+
+		<link href="https://indieauth.com/auth" rel="authorization_endpoint" />
+
+		<meta name="title" content="🌸 lua.lt" />
+		<meta name="description" content="a place for all my random stuff :))" />
+		<meta name="theme-color" content="#FDCEDF" />
+
+		<meta property="og:type" content="profile" />
+		<meta property="og:profile:username" content="lualt" />
+		<meta property="og:profile:gender" content="female" />
+		<meta property="og:title" content="🌸 lua.lt" />
+		<meta
+			property="og:description"
+			content="a place for all my random stuff :))"
+		/>
+		<meta property="og:url" content="https://lua.lt" />
+
+		<meta property="twitter:card" content="summary" />
+		<meta property="twitter:title" content="🌸 lua.lt" />
+		<meta
+			property="twitter:description"
+			content="a place for all my random stuff :))"
+		/>
+		<meta property="twitter:url" content="https://lua.lt" />
+	</head>
+	<body>
+		<div class="title"></div>
+		<div>
+			<div class="visits"></div>
+			{{range $digit := .VisitsAsArray}}
+			<div class="number number-{{$digit}}"></div>
+			{{end}}
+		</div>
+		<div class="header-links"></div>
+		<ul>
+			<li>
+				<a class="link link-lua-lt" href="https://lua.lt"></a>
+			</li>
+			<li>
+				<a class="link link-live-lua-lt" href="https://live.lua.lt"></a>
+			</li>
+		</ul>
+		<div class="header-contact"></div>
+		<ul>
+			<li>
+				<a class="link link-xmpp" href="xmpp://lualt@lua.lt" rel="me"></a>
+				<div class="text text-xmpp"></div>
+			</li>
+			<li>
+				<a class="link link-email" href="mailto:mail@lua.lt" rel="me"></a>
+				<div class="text text-email"></div>
+			</li>
+			<li>
+				<a class="link link-discord" href="https://discord.gg/AT5aztECSd"></a>
+				<div class="text text-discord"></div>
+			</li>
+		</ul>
+		<div class="drawing">
+			<div class="drawing-buttons">
+				<button id="color-black"></button>
+				<button id="color-red"></button>
+				<button id="color-white"></button>
+				<button id="send">Send</button>
+				<button id="faq">FAQ</button>
+			</div>
+			<div class="drawing-canvases">
+				<canvas id="canvas-black" width="264" height="176"></canvas>
+				<canvas id="canvas-red" width="264" height="176"></canvas>
+			</div>
+		</div>
+		<div class="bunny">
+			<a
+				class="bunny-image"
+				href="https://halobunns.carrd.co"
+				target="_blank"
+				rel="noopener noreferrer"
+			></a>
+		</div>
+		<script src="static/javascript/drawing.js"></script>
+	</body>
+</html>

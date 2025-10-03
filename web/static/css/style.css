@@ -1,0 +1,191 @@
+:root {
+	--unit: 60px;
+	--pink: #f2bed1;
+}
+
+* {
+	cursor:
+		url("/static/images/cursor.png") 17 10,
+		auto;
+
+	image-rendering: crisp-edges;
+	image-rendering: pixelated;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	background-color: #f9f5f6;
+	margin: 0;
+	height: 100%;
+}
+
+ul {
+	list-style-type: none;
+	padding-left: 60px;
+}
+
+li {
+	position: relative;
+}
+
+li::before {
+	content: "";
+	display: block;
+	position: absolute;
+	left: -60px;
+	background: no-repeat url("/static/images/bullet.png");
+	width: 60px;
+	height: 60px;
+}
+
+.visits {
+	background: no-repeat url("/static/images/visits.png");
+	height: calc(var(--unit) * 1);
+	width: calc(var(--unit) * 3.5);
+	display: inline-block;
+}
+
+.number {
+	background: no-repeat url("/static/images/numbers.png");
+	height: var(--unit);
+	width: var(--unit);
+	display: inline-block;
+}
+
+.number-1 {
+	background-position-x: calc(var(--unit) * -1);
+}
+.number-2 {
+	background-position-x: calc(var(--unit) * -2);
+}
+.number-3 {
+	background-position-x: calc(var(--unit) * -3);
+}
+.number-4 {
+	background-position-x: calc(var(--unit) * -4);
+}
+.number-5 {
+	background-position-x: calc(var(--unit) * -5);
+}
+.number-6 {
+	background-position-x: calc(var(--unit) * -6);
+}
+.number-7 {
+	background-position-x: calc(var(--unit) * -7);
+}
+.number-8 {
+	background-position-x: calc(var(--unit) * -8);
+}
+.number-9 {
+	background-position-x: calc(var(--unit) * -9);
+}
+
+.title {
+	background: no-repeat url("/static/images/title.png");
+	height: calc(var(--unit) * 2);
+	width: calc(var(--unit) * 14);
+}
+
+.header-links {
+	background: no-repeat url("/static/images/header-links.png");
+	height: calc(var(--unit) * 1);
+	width: calc(var(--unit) * 4);
+}
+
+.header-contact {
+	background: no-repeat url("/static/images/header-contact.png");
+	height: calc(var(--unit) * 1);
+	width: calc(var(--unit) * 5.5);
+}
+
+.link,
+.text {
+	display: inline-block;
+}
+
+.link:hover {
+	animation: 0.5s wiggle step-end infinite;
+}
+
+.link-lua-lt {
+	background: no-repeat url("/static/images/link-lua-lt.png");
+	height: calc(var(--unit) * 1);
+	width: calc(var(--unit) * 3);
+}
+
+.link-live-lua-lt {
+	background: no-repeat url("/static/images/link-live-lua-lt.png");
+	height: calc(var(--unit) * 1);
+	width: calc(var(--unit) * 5.5);
+}
+
+.link-xmpp {
+	background: no-repeat url("/static/images/link-xmpp.png");
+	height: calc(var(--unit) * 1);
+	width: calc(var(--unit) * 7);
+}
+
+.link-email {
+	background: no-repeat url("/static/images/link-email.png");
+	height: calc(var(--unit) * 1);
+	width: calc(var(--unit) * 6);
+}
+
+.link-discord {
+	background: no-repeat url("/static/images/link-discord.png");
+	height: calc(var(--unit) * 1);
+	width: calc(var(--unit) * 3.5);
+}
+
+.text-xmpp {
+	background: no-repeat url("/static/images/text-xmpp.png");
+	height: calc(var(--unit) * 1);
+	width: calc(var(--unit) * 4.5);
+}
+
+.text-email {
+	background: no-repeat url("/static/images/text-email.png");
+	height: calc(var(--unit) * 1);
+	width: calc(var(--unit) * 3.5);
+}
+
+.text-discord {
+	background: no-repeat url("/static/images/text-discord.png");
+	height: calc(var(--unit) * 1);
+	width: calc(var(--unit) * 4.5);
+}
+
+@keyframes wiggle {
+	0% {
+		background-position: 0px -60px;
+	}
+	50% {
+		background-position: 0px 0px;
+	}
+	100% {
+		background-position: 0px -60px;
+	}
+}
+
+.bunny {
+	float: right;
+
+	padding: 1em;
+}
+
+.bunny-image {
+	height: 104px;
+	width: 131px;
+
+	display: block;
+
+	background: no-repeat url("/static/images/bnuuy-1.png");
+	border: none;
+}
+
+.bunny-image:hover {
+	background: no-repeat url("/static/images/bnuuy-2.png");
+}

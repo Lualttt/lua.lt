@@ -15,6 +15,7 @@ func main() {
 
 	http.HandleFunc("/", handlers.Root)
 	http.HandleFunc("/visits", handlers.Visits)
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static/"))))
 
 	err := http.ListenAndServe(":8080", nil)
 	slog.Error(err.Error())
