@@ -14,6 +14,7 @@ func main() {
 	go visits.Main()
 
 	http.HandleFunc("/", handlers.Root)
+	http.HandleFunc("/process", handlers.Process)
 	http.HandleFunc("/visits", handlers.Visits)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static/"))))
 
