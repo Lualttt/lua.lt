@@ -3,6 +3,7 @@ package main
 import (
 	"log/slog"
 	"net/http"
+	"os"
 
 	"github.com/Lualttt/lua.lt/internal/handlers"
 	"github.com/Lualttt/lua.lt/internal/visits"
@@ -18,6 +19,6 @@ func main() {
 	http.HandleFunc("/visits", handlers.Visits)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static/"))))
 
-	err := http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(os.Getenv("LUALT_ADDRESS"), nil)
 	slog.Error(err.Error())
 }
