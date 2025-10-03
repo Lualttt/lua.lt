@@ -38,27 +38,27 @@ func autoSave() {
 func SaveVisits(amount int) {
 	json, err := json.Marshal(visitsFile{Visits: amount})
 	if err != nil {
-		slog.Error("error marshalling visits", "error", err.Error())
+		slog.Error("error marshalling visits", "error", err)
 		return
 	}
 
 	err = os.WriteFile("visits.json", json, 0644)
 	if err != nil {
-		slog.Error("error writing visits", "error", err.Error())
+		slog.Error("error writing visits", "error", err)
 	}
 }
 
 func LoadVisits() int {
 	data, err := os.ReadFile("visits.json")
 	if err != nil {
-		slog.Error("error loading visits", "error", err.Error())
+		slog.Error("error loading visits", "error", err)
 		data = []byte("{\"visits\": 0}")
 	}
 
 	visits := visitsFile{}
 	err = json.Unmarshal(data, &visits)
 	if err != nil {
-		slog.Error("error unmarshalling visits", "error", err.Error())
+		slog.Error("error unmarshalling visits", "error", err)
 	}
 
 	return visits.Visits

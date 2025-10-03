@@ -12,11 +12,11 @@ import (
 )
 
 type PageVariables struct {
-	Views int
+	Visits int
 }
 
 func (pageVariables PageVariables) ViewsAsArray() []string {
-	var text string = strconv.Itoa(pageVariables.Views)
+	var text string = strconv.Itoa(pageVariables.Visits)
 	characters := make([]string, utf8.RuneCountInString(text))
 
 	for i, char := range text {
@@ -38,24 +38,24 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	visits.SetVisits(visits.GetVisits() + 1)
 
 	pageVariables := PageVariables{
-		Views: visits.GetVisits(),
+		Visits: visits.GetVisits(),
 	}
 
 	t, err := template.ParseFiles("./web/templates/index.html")
 	if err != nil {
 		http.Error(w, "Internal server error!", http.StatusInternalServerError)
-		slog.Error("index page error", "error", err.Error())
+		slog.Error("index page error", "error", err)
 		return
 	}
 
 	err = t.Execute(w, pageVariables)
 	if err != nil {
 		http.Error(w, "Internal server error!", http.StatusInternalServerError)
-		slog.Error("index page error", "error", err.Error())
+		slog.Error("index page error", "error", err)
 		return
 	}
 
-	slog.Info("index page loaded")
+	slog.Info("index page loaded", "visits", pageVariables.Visits)
 }
 
 func Visits(w http.ResponseWriter, r *http.Request) {
