@@ -9,6 +9,7 @@ import (
 	"unicode/utf8"
 
 	"github.com/Lualttt/lua.lt/internal/visits"
+	"github.com/Lualttt/lua.lt/web"
 )
 
 type PageVariables struct {
@@ -41,7 +42,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		Visits: visits.GetVisits(),
 	}
 
-	t, err := template.ParseFiles("./web/templates/index.html")
+	t, err := template.ParseFS(web.Templates, "index.tmpl")
 	if err != nil {
 		http.Error(w, "Internal server error!", http.StatusInternalServerError)
 		slog.Error("index page error", "error", err)

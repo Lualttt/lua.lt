@@ -11,7 +11,6 @@ FROM gcr.io/distroless/static-debian12
 WORKDIR /app
 
 COPY --from=build /go/bin/app .
-COPY web web
 
 EXPOSE 8080
 
