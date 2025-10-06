@@ -27,14 +27,6 @@ func (pageVariables PageVariables) VisitsAsArray() []string {
 	return characters
 }
 
-func Root(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path == "/" {
-		Index(w, r)
-	} else {
-		http.NotFound(w, r)
-	}
-}
-
 func Index(w http.ResponseWriter, r *http.Request) {
 	visits.SetVisits(visits.GetVisits() + 1)
 
